@@ -18,7 +18,7 @@
 <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/default.css" >
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/fonts.css" >
-<title>뉴스와 정보</title>
+<title>introduction</title>
 <%
 	String searchString=(String) (pageContext.getAttribute("searchString"));
 	String filename=(String) (pageContext.getAttribute("filename"));
@@ -27,39 +27,40 @@
 function boardlist(){
 	var s="<%=searchString%>";
 	if(s=="None")
-		location.href='newsList.do?current_page=${current_page}';
+		location.href='introductionList.do?current_page=${current_page}';
 	else
 		location.href='listSearchedSpecificPageWork.do?pageForView=${current_page}&searchStr=${searchStr}';	
 }
 
 function boardmodify(){
-	location.href='news_show_update_form.do?idx=${idx}&current_page=${current_page}';
+	location.href='introduction_show_update_form.do?idx=${idx}&current_page=${current_page}';
 }
 
 function boarddelete(){
-	location.href='deleteSpecificRow.do?idx=${idx}&current_page=${current_page}';	
+	location.href='introductionDeleteSpecificRow.do?idx=${idx}&current_page=${current_page}';	
 }
 
 function download(){
 	var param="<%=filename%>";
 	en_filename=encodeURI(param);
-	location.href='download.do?filename='+en_filename;
+	location.href='introduction_download.do?filename='+en_filename;
 }
 
 </script>
 </head>
 <body>
 <!-- *********************** 게시판 글쓰기 폼 ****************************  -->	
-	<jsp:include page="../header.jsp"></jsp:include>
+	<jsp:include page="../../header.jsp"></jsp:include>
 	
 <!-- *********************** 사이드 메뉴 ****************************  -->	
 	
 	<div id="side_menu">
-		<h4><a href="newsList.do?current_page=1">뉴스와 정보</a></h4>
+		<h4><a href="introductionList.do?current_page=1">공지사항</a></h4>
 		<div id="side_div">
 			<ul id="side_submenu">
-				<li>- <a href="financeCompanyList.do?current_page=1"> 금융회사정보 </a></li>
-				<li>- <a href="relatedNewsList.do?current_page=1"> 관련뉴스 </a></li>
+				<li>- <a href="introductionList.do?current_page=1"> 사이트소개 </a></li>
+				<li>- <a href="newnoticeList.do?current_page=1"> 새소식 </a></li>
+				
 			</ul>
 		</div>
 	</div>
@@ -97,6 +98,8 @@ function download(){
 	<td>
 		<input type="button" value="수정" onclick="javascript:boardmodify()">
 		<input type="button" value="목록" onclick="javascript:boardlist()">
+		<!-- 관리자만 작성할 수 있음 -->
+		<input type="button" value="답글" onclick="javascript:boardanswer()">
 		<input type="button" value="삭제" onclick="javascript:boarddelete()">
 	</td>
 	</tr>
@@ -107,7 +110,7 @@ function download(){
 
 <!-- *********************** 게시판 글쓰기 폼 ****************************  -->	
 
-	<jsp:include page="../footer.jsp"></jsp:include>
+	<jsp:include page="../../footer.jsp"></jsp:include>
 	
 </body>
 </html>

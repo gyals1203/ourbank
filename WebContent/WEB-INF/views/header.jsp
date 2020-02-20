@@ -68,11 +68,11 @@ String uid=(String)session.getAttribute("uid");
 <div id="header">
 	<div id="menu" class="container">
 		<ul>
-			<li><a href="#" accesskey="1" title="">공지사항</a>
+			<li><a href="introductionList.do?current_page=1" accesskey="1" title="">공지사항</a>
 			  <div class="sub_menu"> 
 			    <ul>
-	              <li><a href="#">사이트소개</a></li>
-	              <li><a href="#">새 소식</a></li>
+	              <li><a href="introductionList.do?current_page=1">사이트소개</a></li>
+	              <li><a href="newnoticeList.do?current_page=1">새 소식</a></li>
 	            </ul>
 	          </div> 
 	        </li>
@@ -84,15 +84,15 @@ String uid=(String)session.getAttribute("uid");
 	            </ul>
 	          </div>
 	        </li>
-			<li><a href="#" accesskey="3" title="">커뮤니티</a>
+			<li><a href="reviewList.do?current_page=1" accesskey="3" title="">커뮤니티</a>
 			  <div class="sub_menu"> 
 			    <ul>
-	              <li><a href="#">리뷰</a></li>
-	              <li><a href="#">자유게시판</a></li>
-	              <li><a href="#">모임방</a></li>
-	              <li><a href="#">토론방</a></li>
-	              <li><a href="#">제태크노하우</a></li>
-	              <li><a href="#">BEST게시판</a></li>
+	              <li><a href="reviewList.do?current_page=1">리뷰</a></li>
+	              <li><a href="freeList.do?current_page=1">자유게시판</a></li>
+	              <li><a href="meetList.do?current_page=1">모임방</a></li>
+	              <li><a href="debateList.do?current_page=1">토론방</a></li>
+	              <li><a href="investList.do?current_page=1">제태크노하우</a></li>
+	              <li><a href="bestList.do?current_page=1">BEST게시판</a></li>
 	            </ul>
 	          </div>
 	        </li>
@@ -123,11 +123,11 @@ String uid=(String)session.getAttribute("uid");
 	            </ul>
 	          </div>
 			</li>
-			<li><a href="#" accesskey="5" title="">뉴스와정보</a>
+			<li><a href="newsList.do?current_page=1" accesskey="5" title="">뉴스와정보</a>
 			  <div class="sub_menu"> 
 			    <ul>
-	              <li><a href="#">금융회사정보</a></li>
-	              <li><a href="#">관련뉴스</a></li>
+	              <li><a href="financeCompanyList.do?current_page=1">금융회사정보</a></li>
+	              <li><a href="relatedNewsList.do?current_page=1">관련뉴스</a></li>
 	            </ul>
 	          </div>
 			</li>

@@ -131,6 +131,18 @@
 			value="com.ourbank.app.mapper.AdminPage_Mapper"></property>
 		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
+	<bean id="Introduction_Mapper"
+		class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.ourbank.app.mapper.IntroductionBoard_Mapper"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	<bean id="Newnotice_Mapper"
+		class="org.mybatis.spring.mapper.MapperFactoryBean">
+		<property name="mapperInterface"
+			value="com.ourbank.app.mapper.NewnoticeBoard_Mapper"></property>
+		<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 	
 
 

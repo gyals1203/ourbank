@@ -8,7 +8,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@page session="false"%>
-<%@page import="com.ourbank.app.bean.NewsBoard_Bean"%>
+<%@page import="com.ourbank.app.bean.IntroductionBoard_Bean"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Properties"%>
 <%@page import="java.io.IOException"%>
@@ -22,31 +22,34 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/default.css" >
 <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/fonts.css" >
 <meta http-equiv="Content-Type" content="text/html" ; charset="EUC-KR">
-<title>자주하는 질문</title>
+<title>introduction</title>
 <script>
 function totallist(){
-	location.href='newsList.do?current_page=1';
+	location.href='introductionList.do?current_page=1';
 }
-function financeCompanylist(){
-	location.href='financeCompanyList.do?current_page=1';
+function signuplist(){
+	location.href='introductionSignUpList.do?current_page=1';
 }
-function relatedNewslist(){
-	location.href='relatedNewsList.do?current_page=1';
-
+function savingslist(){
+	location.href='introductionSavingsList.do?current_page=1';
+}
+function etclist(){
+	location.href='introductionEtcList.do?current_page=1';
 }
 </script>
 </head>
 <!-- *********************** 게시판 글쓰기 폼 ****************************  -->	
-	<jsp:include page="../header.jsp"></jsp:include>
+	<jsp:include page="../../header.jsp"></jsp:include>
 	
 <!-- *********************** 사이드 메뉴 ****************************  -->	
 	
 	<div id="side_menu">
-		<h4><a href="newsList.do?current_page=1">뉴스와 정보</a></h4>
+		<h4><a href="introductionList.do?current_page=1">공지사항</a></h4>
 		<div id="side_div">
 			<ul id="side_submenu">
-				<li>- <a href="financeCompanyList.do?current_page=1"> 금융회사정보 </a></li>
-				<li>- <a href="relatedNewsList.do?current_page=1"> 관련뉴스 </a></li>
+				<li>- <a href="introductionList.do?current_page=1"> 사이트소개 </a></li>
+				<li>- <a href="newnoticeList.do?current_page=1"> 새소식 </a></li>
+				
 			</ul>
 		</div>
 	</div>
@@ -59,7 +62,25 @@ function relatedNewslist(){
 	int c_page = Integer.parseInt((String) (pageContext.getAttribute("current_page")));
 	pageContext.setAttribute("c_page", c_page);
 %>
-
+<table width="700">
+	<tr>
+		<td>
+				<div style="float: left; width: 40%; padding:10px;" >
+					<button type="button" onclick="javascript:totallist()">전체</button>
+					<button type="button" onclick="javascript:signuplist()">은행별 공지</button>
+					<button type="button" onclick="javascript:savingslist()">상품별 공지</button>
+					<button type="button" onclick="javascript:etclist()">기타공지</button>
+				</div>
+				<div style="float: right; width: 50%; vertical-align: center">
+					<form name=searchf method=post action="introductionSearch.do">
+						<input type="text" name="searchStr" size="30" maxlenght="50">
+						<input type="submit" value="글찾기">
+					</form>
+				</div>
+		
+		</td>
+	</tr>
+</table>
 <table cellspacing=1 width=700 border=0>
 	<tr>
 		<td>총 게시물수: <c:out value="${totalCnt}" /></td>
@@ -71,12 +92,12 @@ function relatedNewslist(){
 
 </table>
 
-<table class="table table-hover" cellspacing=1 width=700 border=1 >
+<table cellspacing=1 width=700 border=1>
 	<tr>
-		<td width="70"><p align="center">번호</td>
-		<td width="150"><p align="center">아이디</td>
+		<td width="50"><p align="center">번호</td>
+		<td width="100"><p align="center">아이디</td>
 		<td width="320"><p align="center">제목</td>
-		<td width="400"><p align="center">등록일</td>
+		<td width="100"><p align="center">등록일</td>
 		<td width="100"><p align="center">조회수</td>
 	</tr>
 	<c:forEach var="board" items="${boardList}">
@@ -86,7 +107,7 @@ function relatedNewslist(){
 			<td width="320">
 				<p align="center">
 					<a
-						href="newsView.do?idx=${board.getIdx()}
+						href="introductionView.do?idx=${board.getIdx()}
 							&current_page=<c:out value="${current_page}"/>
 							&searchStr=None"
 						title="${board.getContent()}"> <c:out
@@ -112,7 +133,7 @@ function relatedNewslist(){
 <table cellspacing="1" width="700" border="1">
 	<tr>
 		<td><c:forEach var="i" begin="1" end="${t_pages}">
-				<a href="newsList.do?current_page=${i}"> [ <c:if
+				<a href="introductionList.do?current_page=${i}"> [ <c:if
 						test="${i==c_page}">
 						<b>
 					</c:if> ${i} <c:if test="${i==c_page}">
@@ -122,14 +143,16 @@ function relatedNewslist(){
 			</c:forEach></td>
 	</tr>
 </table>
+<%-- <c:if test="sessionID가 admin이면"> --%> 
 <table cellspacing="1" width="700">
 	<tr>
 		<td><input type="button" value="글쓰기"
-			onclick="window.location='news_show_write_form.do'"></td>
+			onclick="window.location='introduction_show_write_form.do'"></td>
 	</tr>
 </table>
+<%-- </c:if> --%>
 </div>	
 <!-- *********************** 게시판 글쓰기 폼 ****************************  -->	
 
-	<jsp:include page="../footer.jsp"></jsp:include>
+	<jsp:include page="../../footer.jsp"></jsp:include>
 </html>
